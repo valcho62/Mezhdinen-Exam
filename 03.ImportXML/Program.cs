@@ -31,7 +31,7 @@ namespace _03.ImportXML
         {
             var originAtribute = newanom.Attribute("origin-planet");
             var teleportAttribte = newanom.Attribute("teleport-planet");
-            if (originAtribute.Value == null || teleportAttribte.Value == null)
+            if (originAtribute == null || teleportAttribte == null)
             {
                 Console.WriteLine("Invalid value");
                 return;
@@ -51,15 +51,19 @@ namespace _03.ImportXML
                     OriginPlanet = tempOrigin,
                     TeleportPlanet = tempTeleport
                 };
+                InsertVictims(newanom, contex, tempAnom);
                 contex.Anomalies.Add(tempAnom);
                 Console.WriteLine("Succesfuly add anomaly");
             }
 
-            //victims
+        }
+
+        private static void InsertVictims(XElement newanom, MassDefectContex contex, Anomaly tempAnom)
+        {
             var allVictims = newanom.XPathSelectElements("victims/victim");
             foreach (var victim in allVictims)
             {
-                var tempVictim = contex.Persons.Where(x => x.Name == victim.Value).FirstOrDefault();
+                var tempVictim = contex.Persons.Where(x => x.Name == victim.FirstAttribute.Value).FirstOrDefault();
                 if (tempVictim == null)
                 {
                     Console.WriteLine("Errrrrroooor");
@@ -67,7 +71,7 @@ namespace _03.ImportXML
                 }
                 else
                 {
-                    temp
+                    tempAnom.Victims.Add(tempVictim);
                 }
             }
         }

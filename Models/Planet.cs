@@ -17,6 +17,7 @@ namespace Models
         public string Name { get; set; }
 
         public int SolarSystemId { get; set; }
+        [ForeignKey("SolarSystemId")]
         public SolarSystem SolarSystem { get; set; }
         public int SunId { get; set; }
         [ForeignKey("SunId")]

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.AccessControl;
 
 namespace Models
@@ -9,6 +10,7 @@ namespace Models
         [Required]
         public string Name { get; set; }
         public int SolarSystemId { get; set; }
+        [ForeignKey("SolarSystemId")]
         public SolarSystem SolarSystem { get; set; }
     }
 }

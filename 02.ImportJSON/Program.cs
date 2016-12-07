@@ -22,12 +22,12 @@ namespace _02.ImportJSON
 
         static void Main()
         {
-            //ImportSolarSystems();
-            //ImportStars();
-            //ImportPlanets();
-            //ImportPersons();
-            //ImportAnomaly();
-            //ImportAnomalyVictims();
+            ImportSolarSystems();
+            ImportStars();
+            ImportPlanets();
+            ImportPersons();
+            ImportAnomaly();
+            ImportAnomalyVictims();
         }
 
         private static void ImportAnomaly()
